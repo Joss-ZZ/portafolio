@@ -1,0 +1,432 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+     box-sizing: border-box;
+     font-size: 62.5%; /** 1rem = 10px **/
+   }
+   *, *:before, *:after {
+     box-sizing: inherit;
+     padding: 0;
+     margin: 0;
+   }
+
+   body {
+        background: #E9ECF4;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.6rem;
+        line-height: 2;
+   }
+
+.contenedor{
+     background: #fff;
+     width: 90%;
+     max-width: 1000px;
+     margin: 0 auto;
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     grid-template-rows: repeat(6, auto);
+     grid-template-areas: 
+     "header header header header"
+     "titulo__contenedor titulo__contenedor titulo__contenedor titulo__contenedor"
+     "cursos cursos cursos cursos"
+     "titulo__contenedor2 titulo__contenedor2 titulo__contenedor2 titulo__contenedor2"
+     "formulario formulario formulario formulario"
+     "footer footer footer footer";
+     gap: 2rem;
+     box-shadow: 0 20px 20px -10px #000;
+}
+
+h1{
+     font-size: 3rem;
+}
+
+h2{
+     font-size: 2rem;
+}
+h3{
+     font-size: 1.5rem;
+}
+
+p{
+     font-size: 1.4rem;
+}
+
+/** Header**/
+
+.header{
+     color: #fff;
+     grid-area: header;
+}
+
+.header__menu{
+     background: #263238;
+     display: flex;
+     justify-content: flex-end;
+     list-style: none;
+     border-bottom: 2px solid #1d2124;
+}
+
+.header__menu__desplegable{
+     background: #263238;
+     display: flex;
+     justify-content: flex-start;
+     list-style: none;
+     border-bottom: 2px solid #1d2124;
+     display: none;
+}
+
+/*MENU BOTON DESPLEGABLE*/
+.header__menu__boton{
+     background: #1f262a;
+     height: 3rem;
+     width: 4rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-right: 2px solid #1d2124;
+     cursor: pointer;
+}
+
+.header__menu__boton:hover{
+     background: #546E7A;
+     transition: all .4s;
+}
+
+.header__menu li{
+     border-left: 2px solid #000;
+     transition: all .3s;
+}
+
+.header__menu a{
+     text-decoration: none;
+     color: #fff;
+     display: block;
+     padding: 0 3rem;
+}
+
+.header__menu li:hover{
+     background: #546E7A;
+}
+
+.header__logo{
+     background-image: url("../img/logo.jpg");
+     background-repeat: no-repeat;
+     background-position: center center;
+     height: 30rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
+
+.header__titulo{
+     width: 100%;
+     text-align: center;
+     background: rgba(0, 0, 0, .5);
+}
+
+.header__titulo h1{
+     font-weight: 400;
+}
+
+.header__titulo h1 span{
+     font-weight: 700;
+}
+
+/*------------------------------------------------------------*/
+
+/* Main */
+
+.cursos{
+     grid-column: 1/-1;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+}
+
+.seccion{
+     width: 20rem;
+     height: 20rem;
+     line-height: 2rem;
+     font-size: 1.3rem;
+     overflow: hidden;
+     box-shadow: 0 0 0 10px #fff,
+                 0 0 0 11px #ccc,
+                 0 20px 20px -12px #000;
+}
+
+.art-html{
+     background: url("../img/html5.jpg");
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: cover;
+}
+
+.cursos .seccion p{
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, .9);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     color: #fff;
+     padding: 0 1rem;
+     position: relative;
+     top: 100%;
+     transition: all .3s;
+}
+
+.art-css{
+     background: url("../img/css3.jpg");
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: cover;
+}
+
+.art-js{
+     background: url("../img/javascript.jpg");
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: cover;
+}
+
+.art-java{
+     background: url("../img/java.jpg");
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: cover;
+}
+
+.art-html:hover p{
+     top: 0;
+}
+
+.art-css:hover p{
+     top: 0;
+}
+
+.art-js:hover p{
+     top: 0;
+}
+
+.art-java:hover p{
+     top: 0;
+}
+
+/** Titulos contenedores **/
+
+.titulo__contenedor{
+     margin: 1rem 0;
+     grid-area: titulo__contenedor;
+     text-align: center;
+}
+
+.titulo__contenedor2{
+     margin-top: 2rem;
+     grid-area: titulo__contenedor2;
+     text-align: center;
+}
+
+.titulo__fondo{
+     background: url(../img/cinta.png);
+     background-repeat: no-repeat;
+     background-position: center;
+     color: #fff;
+}
+
+/** Formulario **/
+
+.formulario{
+     grid-area: formulario;
+     width: 90%;
+     margin: 0 auto;
+     border: 1px solid #2c4454;
+     display: flex;
+}
+
+.formulario__frm{
+     width: 60%;
+     padding: 2rem 2rem;
+     display: flex;
+     flex-wrap: wrap
+}
+
+.formulario__campos{
+     width: 100%;
+}
+
+.formulario__campos input:not([type="submit"]),
+.formulario__campos textarea{
+     padding: 1.2rem;
+     margin-bottom: 1.5rem;
+     width: 100%;
+     border: 1px solid #9BAEB8;
+}
+
+.formulario__campos input:focus,
+.formulario__campos textarea:focus{
+     outline: none;
+     border: 1px solid #2c4454;
+}
+
+.formulario__campos textarea{
+     height: 10rem;
+     resize: none;
+}
+
+.formulario__enviar{
+     width: 100%;
+     display: flex;
+     justify-content: flex-end;
+}
+
+.formulario__enviar input{
+     background: #263238;
+     padding: .9rem 1.8rem;
+     color: #fff;
+     border: none;
+}
+
+.formulario__enviar input:hover{
+     background: #3E535E;
+}
+
+/** Formulario info **/
+.formulario__info{
+     width: 40%;
+     background: #2c4454;
+     padding: 5rem 4rem;
+     display: flex;
+     flex-direction: column;
+}
+
+.formulario__contact{
+     display: flex;
+     justify-content: flex-start;
+     margin-bottom: 2rem;
+}
+
+.formulario__contact i{
+     width: 2.5rem;
+     color: #DBDEDC;
+}
+.formulario__contact p{
+     flex : 1;
+     color: #DBDEDC;
+}
+
+
+/** formulario info redes **/
+.formulario__redes{
+     margin-top: 2rem;
+     display: flex;
+     justify-content: center;
+}
+
+.formulario__redes__lista{
+     width: 10rem;
+     list-style: none;
+     display: flex;
+     justify-content: space-between;
+}
+
+.formulario__redes__lista .facebook{
+     color: #fff;
+     width: 4rem;
+     background: #333;
+     text-align: center;
+     line-height: 4rem;
+     border-radius: 50%;
+     transition: all .5s;
+     box-shadow: 0 20px 20px -12px #000;
+}
+
+.formulario__redes__lista .facebook:hover{
+     background: #3b5998;
+}
+
+
+.formulario__redes__lista .twitter{
+     color: #fff;
+     width: 4rem;
+     background: #333;
+     text-align: center;
+     line-height: 4rem;
+     border-radius: 50%;
+     transition: all .5s;
+     box-shadow: 0 20px 20px -12px #000;
+}
+
+.formulario__redes__lista .twitter:hover{
+     background: #00acee;
+}
+
+.footer{
+     width: 100%;
+     height: 6rem;
+     background: #263238;
+     grid-area: footer;
+     display: flex;
+     align-items: center;
+}
+
+.footer h3{
+     margin: 0 3rem;
+     color: #fff;
+     font-weight: 400;
+}
+
+.footer h3 span{
+     font-weight: 700;
+}
+
+@media (max-width: 768px){
+     .contenedor{
+          width: 100%;
+     }
+     .header__menu{
+          border-left: 1px solid #1d2124;
+          border-bottom: 1px solid #1d2124;
+          border-right: 1px solid #1d2124;
+          position: absolute;
+          width: 20rem;
+          flex-direction: column;
+          transform: translateX(-20rem);
+          transition: all .5s;
+     }
+
+     .header__menu li{
+          border-bottom: 1px solid #1d2124;
+          padding: .5rem 0;
+     }
+
+     .header__menu__desplegable{
+          display: block;
+     }
+
+     .formulario{
+          flex-wrap: wrap-reverse;
+     }
+
+     .formulario__info{
+          width: 100%;
+     }
+
+     .formulario__frm{
+          width: 100%;
+     }
+
+     .formulario__contact{
+          justify-content: center;
+     }
+
+     .footer{
+          display: flex;
+          justify-content: center;
+     }
+}
+
+/**Mostramos el menu desplegable**/
+.show {
+     transform: translateX(0rem);
+}
